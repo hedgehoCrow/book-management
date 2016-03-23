@@ -1,12 +1,3 @@
-# Monolist [モノリスト]
+# Book-Mannagement
 
-TechAcademyオンラインブートキャンプの教材ファイル。  
-使い方は学習システム内のレッスンを参照ください。
-
-## Demo
-
-https://mono-list.herokuapp.com/
-
-## Licence
-
-This software is released under the MIT License, see [LICENSE.md](https://github.com/techacademy-jp/monolist/blob/master/LICENSE.md)
+研究室の書籍管理を目的としたシステムです。
