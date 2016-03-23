@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150708042943) do
 
-  create_table "items", force: :cascade do |t|
+  create_table "books", force: :cascade do |t|
     t.string   "asin"
     t.string   "title"
     t.string   "description"
@@ -26,18 +26,18 @@ ActiveRecord::Schema.define(version: 20150708042943) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "items", ["asin"], name: "index_items_on_asin", unique: true
+  add_index "books", ["asin"], name: "index_books_on_asin", unique: true
 
   create_table "ownerships", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "item_id"
+    t.integer  "book_id"
     t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "ownerships", ["item_id"], name: "index_ownerships_on_item_id"
-  add_index "ownerships", ["user_id", "item_id", "type"], name: "index_ownerships_on_user_id_and_item_id_and_type", unique: true
+  add_index "ownerships", ["book_id"], name: "index_ownerships_on_book_id"
+  add_index "ownerships", ["user_id", "book_id", "type"], name: "index_ownerships_on_user_id_and_book_id_and_type", unique: true
   add_index "ownerships", ["user_id"], name: "index_ownerships_on_user_id"
 
   create_table "relationships", force: :cascade do |t|

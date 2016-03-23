@@ -1,0 +1,17 @@
+<div class="action">
+  <% if current_user.want? book %>
+    <%= render 'books/unwant' , book: book %>
+  <% else %>
+    <%= render 'books/want' , book: book %>
+  <% end %> 
+
+  <% if current_user.have? book %>
+    <%= render 'books/unhave' , book: book %>
+  <% else %>
+    <%= render 'books/have' , book: book %>
+  <% end %>
+
+  <% unless current_page?(book) %>
+    <%= link_to "詳細" , book , class: "btn btn-info btn-sm" %>
+  <% end %>
+</div>

@@ -1,0 +1,4 @@
+<%= link_to "" , ownerships_path(book_id: book.id , type: "Have") ,
+                      :class => "have-#{book.id} btn-have btn btn-warning btn-sm have",
+                      :remote => true,
+                      :method => :post %>

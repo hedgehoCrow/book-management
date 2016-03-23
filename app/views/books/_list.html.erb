@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="container-inner inner-default clearfix">
+    <% books.each do |book| %>
+      <div class="book-box">
+        <div class="image">
+          <div class="img-wrap">
+            <% if book.large_image.present? %>
+              <%= image_tag(book.large_image , alt: book.title) %>
+            <% else %>
+              <%= image_tag("no-image.png" , alt: book.title) %>
+            <% end %>
+          </div>
+        </div>
+        <div class="detail">
+          <p class="title">
+            <%= book.title %>
+          </p>
+        </div>
+        <%= render 'books/action' , book: book if logged_in? %>
+      </div>
+    <% end %>
+  </div>
+</div>

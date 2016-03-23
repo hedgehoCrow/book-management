@@ -1,0 +1,6 @@
+<%= link_to "" , 
+    ownership_path(current_user.wants.find_by(:book_id => book.id) , 
+      book_id: book.id , type: "Want") ,
+    :class => "want-#{book.id} btn-want btn btn-danger btn-sm want_it",
+    :remote => true,
+    :method => :delete %>

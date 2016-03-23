@@ -1,0 +1,6 @@
+<%= link_to "" , 
+  ownership_path( current_user.haves.find_by(:book_id => book.id) , 
+    book_id: book.id , type: "Have") ,
+  :class => "have-#{book.id} btn-have btn btn-warning btn-sm have_it",
+  :remote => true,
+  :method => :delete %> 

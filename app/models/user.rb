@@ -13,13 +13,13 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :followed_relationships, source: :follower
 
   has_many :ownerships , foreign_key: "user_id", dependent: :destroy
-  has_many :items ,through: :ownerships
+  has_many :books ,through: :ownerships
   
   has_many :wants, class_name: "Want", foreign_key: "user_id", dependent: :destroy
-  has_many :want_items, through: :wants, source: :item
+  has_many :want_books, through: :wants, source: :book
 
   has_many :haves, class_name: "Have", foreign_key: "user_id", dependent: :destroy
-  has_many :have_items, through: :haves, source: :item
+  has_many :have_books, through: :haves, source: :book
 
   # 他のユーザーをフォローする
   def follow(other_user)
@@ -35,27 +35,27 @@ class User < ActiveRecord::Base
   end
 
   ## TODO 実装
-  def have(item)
-    haves.find_or_create_by(item_id: item.id)
+  def have(book)
+    haves.find_or_create_by(book_id: book.id)
   end
 
-  def unhave(item)
-    haves.find_by(item_id: item.id).destroy
+  def unhave(book)
+    haves.find_by(book_id: book.id).destroy
   end
 
-  def have?(item)
-    have_items.include?(item)
+  def have?(book)
+    have_books.include?(book)
   end
 
-  def want(item)
-    wants.find_or_create_by(item_id: item.id)
+  def want(book)
+    wants.find_or_create_by(book_id: book.id)
   end
 
-  def unwant(item)
-    wants.find_by(item_id: item.id).destroy
+  def unwant(book)
+    wants.find_by(book_id: book.id).destroy
   end
 
-  def want?(item)
-    want_items.include?(item)
+  def want?(book)
+    want_books.include?(book)
   end
 end
