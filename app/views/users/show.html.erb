@@ -1,0 +1,10 @@
+<% content_for :ogp do %>
+  <meta property="og:title" content="<%= @user.name %>-monolist" />
+  <meta property="og:description" content="<%= @user.name %>のモノページ。Hanakoの欲しいモノ、持ってるモノを表示しています。" />
+<% end %>
+
+<%= render 'profile' , user: @user %>
+
+
+<%= render 'items/list' , items: @items %>
+
