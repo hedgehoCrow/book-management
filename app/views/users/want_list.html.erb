@@ -1,0 +1,43 @@
+  <% if @want_list.any? %>
+    <% @want_list.each do |book| %>
+    <div class="container">
+      <div class="container-inner inner-sm clearfix">
+        <div class="book-single-main">
+          <div class="image">
+            <div class="img-wrap">
+              <% if book.large_image.present? %>
+                <%= image_tag(book.large_image , alt: book.title) %>
+              <% else %>
+                <%= image_tag("no-image.png", alt: book.title) %>
+              <% end %>
+            </div>
+          </div>
+          <div class="title">
+            <%= book.title %>
+          </div>
+          <%= render 'books/action', book: book %>
+          </div>
+          <div class="book-single-side">
+            <div class="side-box">
+              <h4 class="side-box-title">欲しがっているユーザ一覧</h4>
+              <div class="side-box-body">
+                <% if @want_users.any? %>
+                  <div class="user_avatars">
+                    <% @want_users.each do |want_user| %>
+                      <%= link_to gravatar_for(want_user, size: 30), want_user %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="text-center">
+              <%= link_to(image_tag("amazon-button.png", {alt: "Amazon詳細ページへ"}), book.detail_page_url, target: "_blank") %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    <span class="text-center"><h3>欲しい書籍はありません</h3></span>
+  <% end %>

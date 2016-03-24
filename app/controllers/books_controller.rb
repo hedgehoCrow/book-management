@@ -16,6 +16,16 @@ class BooksController < ApplicationController
 
   def show
   end
+  
+  def show_stock
+  end
+  
+  def show_reserved
+  end
+  
+  def show_all
+    @books = Book.all.order("updated_at DESC")
+  end
 
   private
   def set_book

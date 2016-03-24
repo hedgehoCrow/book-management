@@ -1,0 +1,10 @@
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-contents">
+      <h1>書籍一覧</h1>
+      <%= link_to '書籍を追加する' , login_path, class: "btn btn-success btn-lg" %>
+    </div>
+  </div>
+</div>
+
+<%= render 'books/list' , books: @books %>

@@ -16,6 +16,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "書籍一覧", books_show_all_path %></li>
             <% unless logged_in? %>
               <li><%= link_to "新規登録", signup_path %></li>
               <li><%= link_to "ログイン", login_path %></li>
@@ -36,7 +37,13 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <%= link_to "プロフィール" , current_user  %>
+                    <%= link_to "プロフィール" , current_user %>
+                  </li>
+                  <li>
+                    <%= link_to "欲しいものリスト", users_want_list_path %>
+                  </li>
+                  <li>
+                    <%= link_to "貸出予約", users_reserved_books_path %>
                   </li>
                   <li role="separator" class="divider"></li>
                   <li>

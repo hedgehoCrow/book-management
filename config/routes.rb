@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-
+  
   root 'welcome#index'
+  get 'users/want_list'
+  get 'users/reserved_books'
+  get 'books/show_stock'
+  get 'books/show_reserved'
+  get 'books/show_all'
 
   get    'signup', to: 'users#new'
   get    'login' , to: 'sessions#new'
