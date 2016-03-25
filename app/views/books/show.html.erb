@@ -8,7 +8,6 @@
     <div class="book-single-main">
       <div class="image">
         <div class="img-wrap">
-          <% #TODO 商品イメージ %>
           <% if @book.large_image.present? %>
             <%= image_tag(@book.large_image , alt: @book.title) %>
           <% else %>
@@ -17,7 +16,6 @@
         </div>
       </div>
       <div class="title">
-        <% #TODO 商品タイトル %>
         <%= @book.title %>
       </div>
       <%= render 'action' , book: @book %>
@@ -26,7 +24,6 @@
       <div class="side-box">
         <h4 class="side-box-title">Haveしたユーザー</h4>
         <div class="side-box-body">
-          <% # TODO Haveしたユーザー一覧 %>
           <% if @have_users.any? %>
             <div class="user_avatars">
               <% @have_users.each do |have_user| %>
@@ -39,7 +36,6 @@
       <div class="side-box">
         <h4 class="side-box-title">Wantしたユーザー</h4>
         <div class="side-box-body">
-          <% # TODO Wantしたユーザー一覧 %>
           <% if @want_users.any? %>
             <div class="user_avatars">
               <% @want_users.each do |want_user| %>
@@ -50,7 +46,6 @@
         </div>
       </div>
       <div class="text-center">
-        <% #TODO 正しいリンク先に %>
         <%= link_to(image_tag("amazon-button.png", {alt: "Amazon詳細ページへ"}), @book.detail_page_url, target: "_blank") %>
       </div>
     </div>

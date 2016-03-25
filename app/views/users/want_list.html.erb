@@ -33,6 +33,33 @@
             <div class="text-center">
               <%= link_to(image_tag("amazon-button.png", {alt: "Amazon詳細ページへ"}), book.detail_page_url, target: "_blank") %>
             </div>
+            
+            
+<div id="content">
+
+  <!-- 市町村選択 -->
+  <div id="pref" >
+    選択された市町村:
+    <strong id="pref_name">東京都世田谷区</strong>
+  </div>
+
+  <!-- ISBNリスト -->
+  <h4>isbn list:</h4>
+
+  <select name="" id="isbn_list" size=2>
+    <option value="B009IY51BW" selected>斜陽</option>
+    <option value="4861825016">プラグマティズム古典集成</option>
+  </select>
+
+  <!-- 結果の表示 -->
+  <div id="calil_booklist" class="clearfix">
+  </div>
+
+
+</div>
+
+            
+            
           </div>
         </div>
       </div>
@@ -41,3 +68,80 @@
   <% else %>
     <span class="text-center"><h3>欲しい書籍はありません</h3></span>
   <% end %>
+
+
+
+<script type="text/javascript">
+
+  //デフォルトの図書館ID(sysytemid)
+  var systemid_list = ['Univ_Ritsumei'];
+
+  //市町村選択時に実行される関数
+  function on_select_city(systemid, pref){
+
+    systemid_list = systemid;
+    log(systemid_list);
+
+    //選択市町村の表示
+    $('#pref').show();
+    $('#pref_name').html(pref);
+
+    apishow();
+
+  }
+
+  var city_selector = {};
+
+  $(function(){
+
+    //市町村選択ダイアログ
+    city_selector = new CalilCitySelectDlg({
+      'appkey' : '21a083a3fe1343dc207081c91e5f31ba',
+      'select_func' : on_select_city
+    });
+
+    apishow();
+
+    //ISBNリスト選択時
+    $('#isbn_list').change(apishow);
+  });
+
+
+  //図書館APIの検索結果の表示
+  function apishow(){
+
+    var isbn_list = $('#isbn_list').val().split(',');
+    $('#calil_booklist').html('');
+
+    $(isbn_list).each(function(i, isbn){
+      //Amazonの書影
+      var thumbnail = '<a href="http://www.amazon.co.jp/exec/obidos/ASIN/' + isbn + '" target="_blank"><img border="0" src="https://images-na.ssl-images-amazon.com/images/P/' + isbn +'.09.MZZZZZZ.jpg" style="" alt="" onload="if(this.width==\'1\') this.src=\'/public/img/no-image/middle.gif\'"></a>';
+
+      //検索結果表示場所の追加
+      $('#calil_booklist').append('<div class="calil_book">'+ thumbnail + '<div id="'+isbn+'"></div></div>');
+    });
+
+    //検索表示用のインスタンス作成
+    var calil = new Calil({
+      'appkey' : '21a083a3fe1343dc207081c91e5f31ba',
+      'render': new CalilRender(),
+      'isbn' : isbn_list,
+      'systemid' : systemid_list
+    });
+    //検索結果の表示 結果は↑で生成した<div id="isbn"></div>に描画されます
+    calil.search();
+  }
+
+
+  //デバッグ用関数
+  function log(text){
+    try{
+      console.log(text);
+    }catch( e ){}
+  }
+
+
+</script>
+
+            
+            
