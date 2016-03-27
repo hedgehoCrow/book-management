@@ -1,7 +1,7 @@
 class CreateBooks < ActiveRecord::Migration
   def change
     create_table :books do |t|
-      t.string :asin
+      t.string :asin # isbn == asin if book?
       t.string :title
       t.string :description
       t.string :detail_page_url

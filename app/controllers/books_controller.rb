@@ -14,19 +14,18 @@ class BooksController < ApplicationController
     end
   end
 
-  def show
-  end
-  
-  def show_stock
-  end
-  
-  def show_reserved
-  end
-  
   def show_all
     @books = Book.all.order("updated_at DESC")
   end
 
+  def show_stock
+  end
+  
+  def show_reserved
+    @books = Have.all
+  end
+  
+  
   private
   def set_book
     @book = Book.find(params[:id])

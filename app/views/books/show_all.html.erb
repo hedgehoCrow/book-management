@@ -2,8 +2,15 @@
   <div class="cover-inner">
     <div class="cover-contents">
       <h1>書籍一覧</h1>
-      <%= link_to '書籍を追加する' , login_path, class: "btn btn-success btn-lg" %>
+      <%= link_to '書籍を検索する' , login_path, class: "btn btn-success btn-lg" %>
     </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <%= link_to '書籍一覧', books_show_all_path, class: "col-sm-offset-3 col-sm-2 btn btn-info" %>
+    <%= link_to '在庫一覧', books_show_stock_path, class: "col-sm-2 btn btn-info" %>
+    <%= link_to '貸出一覧', books_show_reserved_path, class: "col-sm-2 btn btn-info" %>
   </div>
 </div>
 

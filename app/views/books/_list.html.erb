@@ -16,55 +16,8 @@
             <%= book.title %>
           </p>
         </div>
-        <div class="detail">
-          <p class="title">
-            <div id="content">
-              <!-- ISBNリスト -->
-              <select name="" id="isbn_list" size=1>
-                <option value="B009IY51BW" selected>斜影</option>
-              </select>
-              <!-- 結果の表示 -->
-              <div id="calil_booklist" class="clearfix"></div>
-            </div>
-          </p>
-        </div>
         <%= render 'books/action' , book: book if logged_in? %>
       </div>
     <% end %>
   </div>
 </div>
-
-<script type="text/javascript">
-//図書館APIの検索結果の表示
-function apishow(){
-
-    var isbn_list = $('#isbn_list').val().split(',');
-    $('#calil_booklist').html('');
-    
-    $(isbn_list).each(function(i, isbn){
-      //Amazonの書影
-      var thumbnail = '<a href="http://www.amazon.co.jp/exec/obidos/ASIN/' + isbn + '" target="_blank"><img border="0" src="https://images-na.ssl-images-amazon.com/images/P/' + isbn +'.09.MZZZZZZ.jpg" style="" alt="" onload="if(this.width==\'1\') this.src=\'/public/img/no-image/middle.gif\'"></a>';
-    //検索結果表示場所の追加
-      $('#calil_booklist').append('<div class="calil_book">'+ thumbnail + '<div id="'+isbn+'"></div></div>');
-    });
-    
-    //検索表示用のインスタンス作成
-    var calil = new Calil({
-      'appkey' : '21a083a3fe1343dc207081c91e5f31ba',
-      'render': new CalilRender(),
-      'isbn' : isbn_list,
-      'systemid' : 'Univ_Ritsumei'
-    });
-}
-
-//検索結果の表示 結果は↑で生成した<div id="isbn"></div>に描画されます
-calil.search();
-
-
-//デバッグ用関数
-function log(text){
-    try{
-        console.log(text);
-    }catch( e ){}
-}
-</script>

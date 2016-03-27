@@ -1,2 +1,6 @@
 <h1>Books#reserved_book</h1>
 <p>Find me in app/views/books/reserved_book.html.erb</p>
+
+<% @books.each do |book| %>
+    <%= book.title %><br />
+<% end %>

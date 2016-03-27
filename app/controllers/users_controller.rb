@@ -31,7 +31,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
-  # TODO want_usersを用いる
   def set_want_users
     @want_users = [current_user];
   end
