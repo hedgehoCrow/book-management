@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.11.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
 # Use SCSS for stylesheets
@@ -27,7 +27,15 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
-gem 'bootstrap-sass'
+gem "bootstrap-sass", ">= 3.4.1"
+gem "activejob", ">= 4.2.11"
+gem "actionview", ">= 4.2.11.1"
+gem "activerecord", ">= 4.2.7.1"
+gem "rack", ">= 1.6.11"
+gem "sprockets", ">= 3.7.2"
+gem "rails-html-sanitizer", ">= 1.0.4"
+gem "nokogiri", ">= 1.8.5"
+gem "loofah", ">= 2.2.3"
 # https://github.com/jugend/amazon-ecs
 gem 'amazon-ecs'
 
