@@ -34,7 +34,7 @@ gem "activerecord", ">= 4.2.7.1"
 gem "rack", ">= 1.6.11"
 gem "sprockets", ">= 3.7.2"
 gem "rails-html-sanitizer", ">= 1.0.4"
-gem "nokogiri", ">= 1.8.5"
+gem "nokogiri", ">= 1.10.4"
 gem "loofah", ">= 2.2.3"
 # https://github.com/jugend/amazon-ecs
 gem 'amazon-ecs'
